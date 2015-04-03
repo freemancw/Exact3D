@@ -1,0 +1,8 @@
+#include "../headers/resources.h"
+
+// The icon path I used will be needed by Eclipse.
+// If you want to use back-slashes you have to scape them (\\ instead of \):
+APPICON ICON "../app.ico"
+
+
+ 
