@@ -45,8 +45,19 @@ materialHandle_t renderer_img_createMaterial(char *name, vec3_t ambient, vec3_t 
 	VectorCopy(diffuse,  currentMat->diffuse);
 	VectorCopy(specular, currentMat->specular);
 
-	renderer_img_loadTGA(name, &(currentMat->glTexID),
-			&(currentMat->width), &(currentMat->height), &(currentMat->bpp));
+	if (strstr(name, ".gltf") != NULL || strstr(name, ".glb") != NULL) {
+		// Handle GLTF textures
+		// Assuming the GLTF model loading function has already loaded the textures into OpenGL
+		// and stored the texture ID in the material name
+		currentMat->glTexID = atoi(name);
+		currentMat->width = 0;  // Width and height are not known at this point
+		currentMat->height = 0;
+		currentMat->bpp = 0;
+	} else {
+		// Handle TGA textures
+		renderer_img_loadTGA(name, &(currentMat->glTexID),
+				&(currentMat->width), &(currentMat->height), &(currentMat->bpp));
+	}
 
 	if(clamp)
 	{

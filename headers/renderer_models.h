@@ -16,4 +16,7 @@ typedef int modelHandle_t;
 modelHandle_t renderer_model_loadASE(char *name, eboolean collidable, eboolean clamp);
 void renderer_model_drawASE(modelHandle_t index);
 
+modelHandle_t renderer_model_loadGLTF(char *name, eboolean collidable, eboolean clamp);
+void renderer_model_drawGLTF(modelHandle_t index);
+
 #endif /* RENDERER_MODELS_H_ */
