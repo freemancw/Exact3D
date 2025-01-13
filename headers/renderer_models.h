@@ -9,6 +9,8 @@ Created on: Feb 19, 2011
 #ifndef RENDERER_MODELS_H_
 #define RENDERER_MODELS_H_
 
+#include "cgltf.h"
+
 #define MAX_MODELS   128
 
 typedef int modelHandle_t;
