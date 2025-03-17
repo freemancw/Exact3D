@@ -22,10 +22,11 @@ Created on: Sep 29, 2010
 #include "headers/renderer_models.h"
 #include "headers/renderer_camera.h"
 #include "headers/renderer_2D.h"
+#include "headers/renderer_model_GLTF.h"
 
 //#define CONVEXHULL
 
-static modelHandle_t skyModel, worldModel, shotgunModel;
+static modelHandle_t skyModel, worldModel, shotgunModel, gltfModel;
 
 #ifdef CONVEXHULL
 
@@ -294,6 +295,7 @@ static void renderer_loadGameMeshes()
 	skyModel     = renderer_model_loadASE("models/skybox.ASE",  efalse, etrue);
 	worldModel   = renderer_model_loadASE("models/egypt.ASE",	 etrue, efalse);
 	shotgunModel = renderer_model_loadASE("models/shotgun.ASE", efalse, efalse);
+	gltfModel    = renderer_model_loadGLTF("models/model.gltf", efalse, efalse);
 }
 
 /*
@@ -465,6 +467,8 @@ void renderer_drawFrame()
 
 	//Note: responsible for setting up modelview
 	renderer_drawFPGeom();
+
+	renderer_model_drawGLTF(gltfModel);
 
 #endif
 
